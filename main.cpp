@@ -118,7 +118,7 @@ void visualizarProdutos(const vector<Produto>& produtos, const Estoque<Produto>&
     }
 }
 
-int removerProduto(vector<Produto>& produtos){
+int removerProdutoLista(vector<Produto>& produtos){
     int codRemover;
     std::cout << "Digite o codigo para remover produto: ";
     cin >> codRemover;
@@ -474,7 +474,7 @@ int main(){
                 alterarProduto(produtos);
                 break;
             case 3: {
-                int cod = removerProduto(produtos);
+                int cod = removerProdutoLista(produtos);
                 if (cod != -1) {
                     estoque.removerProduto(cod);
                 }
