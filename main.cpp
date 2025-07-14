@@ -118,7 +118,7 @@ void visualizarProdutos(const vector<Produto>& produtos, const Estoque<Produto>&
     }
 }
 
-void removerProduto(vector<Produto>& produtos){ // sem alteração, não usa Estoque
+void removerProduto(vector<Produto>& produtos){ 
     int codRemover;
     std::cout << "Digite o codigo para remover produto: ";
     cin >> codRemover;
@@ -132,7 +132,7 @@ void removerProduto(vector<Produto>& produtos){ // sem alteração, não usa Est
     std::cout << "PRODUTO NÃO ENCONTRADO!" << std::endl;
 }
 
-void alterarProduto(vector<Produto>& produtos){ // sem alteração, não usa Estoque
+void alterarProduto(vector<Produto>& produtos){ 
     int codAlterar;
     cout << "Digite o codigo para alterar produto: ";
     cin >> codAlterar;
@@ -320,7 +320,7 @@ void removerItemdoPedido(vector<Pedido>& pedidos, Estoque<Produto>& estoque) {
     std::cout << "PEDIDO NÃO ENCONTRADO!" << std::endl;
 }
 
-void criarCliente(vector<Cliente*>& clientes) { // sem alteração, não usa Estoque
+void criarCliente(vector<Cliente*>& clientes) { 
     char tipo;
     do {
         cout << "\nCadastrar cliente Fisico (f) ou Juridico (j)? ";
@@ -368,13 +368,13 @@ void criarCliente(vector<Cliente*>& clientes) { // sem alteração, não usa Est
     } while (tipo == 's' || tipo == 'S');
 }
 
-void mostrarClientes(const vector<Cliente*>& clientes){ // sem alteração, não usa Estoque
+void mostrarClientes(const vector<Cliente*>& clientes){ 
     for (const Cliente* c: clientes){
         c->mostrarDados();
     }
 }
 
-void aumentarqtdprod_item(vector<Pedido>& pedidos){ // sem alteração, não usa Estoque
+void aumentarqtdprod_item(vector<Pedido>& pedidos){ 
     int idItem;
     std::cout << "Digite o id do Item: ";
     std::cin >> idItem;
