@@ -118,7 +118,7 @@ void visualizarProdutos(const vector<Produto>& produtos, const Estoque<Produto>&
     }
 }
 
-void removerProduto(vector<Produto>& produtos){ 
+int removerProduto(vector<Produto>& produtos){
     int codRemover;
     std::cout << "Digite o codigo para remover produto: ";
     cin >> codRemover;
@@ -126,10 +126,11 @@ void removerProduto(vector<Produto>& produtos){
         if (i->getCodigo() == codRemover) {
             produtos.erase(i);
             std::cout << "PRODUTO REMOVIDO COM SUCESSO!" << std::endl;
-            return;
+            return codRemover;
         }
     }
     std::cout << "PRODUTO NÃO ENCONTRADO!" << std::endl;
+    return -1;
 }
 
 void alterarProduto(vector<Produto>& produtos){ 
@@ -472,10 +473,13 @@ int main(){
             case 2:
                 alterarProduto(produtos);
                 break;
-            case 3:
-                removerProduto(produtos);
-                estoque.removerProduto(produtos.back().getCodigo());
+            case 3: {
+                int cod = removerProduto(produtos);
+                if (cod != -1) {
+                    estoque.removerProduto(cod);
+                }
                 break;
+            }
             case 4:
                 aumentarEstoque(produtos, estoque);
                 break;
