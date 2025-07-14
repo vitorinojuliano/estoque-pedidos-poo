@@ -33,11 +33,11 @@ void exibirMenu(){
 
     std::cout << "| 5 - Criar pedido                                 |" << std::endl;
 
-    std::cout << "| 6 - Criar cliente                                |" << std::endl;
+    std::cout << "| 6 - Adicionar cliente                            |" << std::endl;
  
     std::cout << "| 7 - Remover item do pedido                       |" << std::endl;
  
-    std::cout << "| 8 - Adicionar itens a um pedido existente        |" << std::endl;
+    std::cout << "| 8 - Adicionar item a um pedido                   |" << std::endl;
  
     std::cout << "| 9 - Visualizar Produtos                          |" << std::endl;
  
@@ -45,15 +45,16 @@ void exibirMenu(){
 
     std::cout << "| 11 - Visualizar Clientes                         |" << std::endl;
 
-         cout << "| 12 - Produto mais barato                         |" << std::endl;
+         cout << "| 12 - Visualizar Produto mais barato              |" << std::endl;
 
-         cout << "| 13 - Produto mais caro                           |" << std::endl;
+         cout << "| 13 - Visualizar Produto mais caro                |" << std::endl;
 
     std::cout << "| 14 - Sair                                        |" << std::endl;
     std::cout << "+--------------------------------------------------+" << std::endl;
     std::cout << "+ Escolha uma opção: " << std::endl;
     
 }
+
 void cadastrarProduto(vector<Produto>& produtos, Estoque<Produto>& estoque){
     int categoriaOpcao;
     string nome;
@@ -373,29 +374,6 @@ void mostrarClientes(const vector<Cliente*>& clientes){
     for (const Cliente* c: clientes){
         c->mostrarDados();
     }
-}
-
-void aumentarqtdprod_item(vector<Pedido>& pedidos){ 
-    int idItem;
-    std::cout << "Digite o id do Item: ";
-    std::cin >> idItem;
-    for (auto& ped : pedidos) {
-        for (auto& item : ped.getItens()) {
-            if (item.getIdItem() == idItem) {
-                int qtd_produtos;
-                std::cout << "Digite quantos produtos quer adicionar: ";
-                std::cin >> qtd_produtos;
-                if (qtd_produtos > 0) {
-                    item.setQuantidade(item.getQuantidade() + qtd_produtos);
-                    std::cout << "Quantidade adicionada ao item!" << std::endl;
-                } else {
-                    std::cout << "Quantidade inválida!" << std::endl;
-                }
-                return;
-            }
-        }
-    }
-    std::cout << "ITEM NÃO ENCONTRADO!" << std::endl;
 }
 
 // Função template para menor preço
