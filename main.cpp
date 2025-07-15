@@ -47,7 +47,7 @@ void exibirMenu(){
 
          cout << "| 12 - Visualizar Produto mais barato              |" << std::endl;
 
-         cout << "| 13 - Visualizar Produto mais caro                |" << std::endl;
+         cout << "| 13 - Visualizar ordenado de mais caro            |" << std::endl;
 
     std::cout << "| 14 - Sair                                        |" << std::endl;
     std::cout << "+--------------------------------------------------+" << std::endl;
@@ -389,18 +389,26 @@ const T& encontrarMenorPreco(const std::vector<T>& itens) {
     return *menor;
 }
 
-void produtoMaiorPreco(const vector<Produto>& produtos, const Estoque<Produto>& estoque){
+void produtoPorMaiorPreco(const vector<Produto>& produtos, const Estoque<Produto>& estoque){
     if (produtos.empty()) {
         std::cout << "Nenhum produto cadastrado!" << std::endl;
         return;
     }
-    Produto a = produtos[0];
-    for (const auto& p : produtos) {
-        if (p.getPreco() > a.getPreco()) {
-            a = p;
+    std::vector<Produto> produtosOrdenados = produtos;
+    std::sort(produtosOrdenados.begin(), produtosOrdenados.end(), [](const Produto& a, const Produto& b) {
+        return a > b;
+    });
+    std::cout << "+-------------------------------------------------+" << std::endl;
+    std::cout << "|      PRODUTOS DO MAIOR PARA O MENOR PREÇO       |" << std::endl;
+    std::cout << "+-------------------------------------------------+" << std::endl;
+    for (const auto& p : produtosOrdenados) {
+        std::cout << p;
+        int qtd = estoque.getQuantidade(p.getCodigo());
+        if (qtd >= 0) {
+            std::cout << " Quantidade em estoque: " << qtd << std::endl;
         }
+        std::cout << "+-------------------------------------------------+" << std::endl;
     }
-    a.mostrar(estoque.getQuantidade(a.getCodigo()));
 }
 
 void aumentarEstoque(vector<Produto>& produtos, Estoque<Produto>& estoque) {
@@ -491,7 +499,7 @@ int main(){
                 }
                 break;
             case 13:
-                produtoMaiorPreco(produtos, estoque);
+                produtoPorMaiorPreco(produtos, estoque);
                 break;
             case 14:
                 std::cout << "Saindo..." << std::endl;
