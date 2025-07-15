@@ -484,12 +484,8 @@ int main(){
                 break;
             case 12:
                 try {
-                    if (produtos.empty()) {
-                        std::cout << "Nenhum produto cadastrado!" << std::endl;
-                    } else {
-                        const Produto& a = encontrarMenorPreco(produtos);
-                        a.mostrar(estoque.getQuantidade(a.getCodigo()));
-                    }
+                    const Produto& a = encontrarMenorPreco(produtos);
+                    a.mostrar(estoque.getQuantidade(a.getCodigo()));
                 } catch (const std::exception& e) {
                     std::cout << "Erro: " << e.what() << std::endl;
                 }
