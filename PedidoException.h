@@ -23,7 +23,7 @@ public:
 
 class EstoqueInsuficienteException : public PedidoException {
 public:
-    EstoqueInsuficienteException(const std::string& msg) : PedidoException(msg) {}
+    explicit EstoqueInsuficienteException(const std::string& msg) : PedidoException(msg) {}
 };
 
 #endif
